@@ -8,16 +8,16 @@ const client = new Client({
     port: 5432,
     password: '123456'
 });
-
+//edit
 client.connect();
 const routes = express.Router();
 
 
 //Query com cadastro de usuário
 routes.post('/newUser', (request, response) => {
-    const {name, email, login, password, profile} = request.body;
-    client.query(`insert into usuario (nomeusuario, emailusuario, loginusuario, senhausuario, urlimgusuario) values
-    ('${name}' ,'${email} ' ,'${login} ' ,'${password} ' , '${profile} ');`, (err, result) => {
+    const {name, email, login, password, profile, city, dateofbirth} = request.body;
+    client.query(`insert into usuario (nomeusuario, emailusuario, loginusuario, senhausuario, urlimgusuario, cidade, datanascimentousuario) values
+    ('${name}' ,'${email} ' ,'${login} ' ,'${password} ' , '${profile} ', '${city}', '${dateofbirth}'));`, (err, result) => {
         if(err){
             console.log(err);
             response.status(400).send(err);
