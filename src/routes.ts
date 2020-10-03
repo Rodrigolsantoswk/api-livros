@@ -60,9 +60,9 @@ routes.post('/purchase', (request, response) => {
     const {dataemprestimo, realizacaoemprestimo, datadevolucao, enderecoemprestimo, 
         devolucaoemprestimo, idusuarioconcedente, idusuarioreceptor, idlivro} = request.body;
 
-    client.query(`insert into emprestimo (dataemprestimo, realizacaoemprestimo, datadevolucao, enderecoemprestimo, devolucaoemprestimo, idusuarioconcedente, idusuarioreceptor, idlivro) values
-    ('${dataemprestimo}', ${realizacaoemprestimo}, '${datadevolucao}', '${enderecoemprestimo}', 
-    ${devolucaoemprestimo}, ${idusuarioconcedente}, ${idusuarioreceptor}, ${idlivro});`, (err, result) => {
+    client.query(`insert into emprestimo (dataemprestimo, datadevolucao, enderecoemprestimo, idusuarioconcedente, idusuarioreceptor, idlivro, devolucaoemprestimo, realizacaoemprestimo) values
+    ('${dataemprestimo}', '${datadevolucao}', '${enderecoemprestimo}',
+    ${idusuarioconcedente}, ${idusuarioreceptor}, ${idlivro}, ${devolucaoemprestimo}, ${realizacaoemprestimo});`, (err, result) => {
         if(err){
             console.log(err);
             response.status(400).send(err);
